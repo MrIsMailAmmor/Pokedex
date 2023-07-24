@@ -76,7 +76,7 @@ export const filterAndScoreData = (
       filteredData.map((pokemon) => {
         let score = 0;
         if (pokemonTypes.length === 0) {
-          score += 1; // If no types are selected, give a bonus score
+          score++; // If no types are selected, give a bonus score
         } else {
           score += pokemon.types.filter((type) =>
             pokemonTypes.includes(type.type.name)
@@ -84,9 +84,12 @@ export const filterAndScoreData = (
         }
 
         if (pokemon.weight <= pokemonWeight) {
-          score += 1; // If weight condition is matched, give a bonus score
+          score++; // If weight condition is matched, give a bonus score
         }
 
+        if (pokemon.name.includes(searchName)) {
+          score++;
+        }
         return { ...pokemon, score };
       });
 

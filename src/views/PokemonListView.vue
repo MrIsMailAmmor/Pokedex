@@ -3,7 +3,7 @@
     <PokemonFilterView />
     <div>
       <div
-        class="grid sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 xl:grid-cols-6 2xl:grid-cols-7 ease-in gap-3 right-0 font-mono mt-5 ml-5"
+        class="grid sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 2xl:grid-cols-6 ease-in gap-3 right-0 font-mono mt-5 ml-5"
       >
         <PokemonCardView
           v-for="(pokemon, index) in pokemons"

@@ -18,7 +18,7 @@ export const myStore = defineStore({
       this.pokemonFilters.pokemonTypes = filters.pokemonTypes;
       this.pokemonFilters.pokemonWeight = filters.pokemonWeight;
       this.pokemonFilters.searchName =
-        (filters.searchName.length > 2 && filters.searchName) || "";
+        (filters.searchName?.length > 2 && filters.searchName) || "";
     },
     setFilteredData(filteredData: Pokemon[]) {
       this.filteredData = filteredData;
