@@ -1,9 +1,8 @@
-// src/store/index.ts
 import { StoreDefinition, defineStore } from "pinia";
 import { state } from "./state";
 import { getters } from "./getters";
-import { Filter, Pokemon } from "@/utils/interface";
-import { getInitialData } from "@/utils/utils";
+import { Filter, Pokemon } from "../utils/interface";
+import { getInitialData } from "../utils/utils";
 import { Actions, Getters, State } from "./interface";
 
 export const myStore: StoreDefinition<"myStore", State, Getters, Actions> =
