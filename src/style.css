@@ -1,0 +1,39 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --color-gray-100: #f3f4f6;
+  --color-gray-300: #d1d5db;
+  --color-gray-500: #6b7280;
+  --color-gray-800: #1f2937;
+}
+
+body {
+  background-color: rgba(29, 79, 216, 0.416);
+}
+
+.card {
+  background-color: theme("colors.white");
+  border-radius: theme("borderRadius.lg");
+  padding: theme("spacing.6");
+  box-shadow: theme("boxShadow.xl");
+}
+.activePage {
+  background: black;
+  color: white;
+}
+
+.page {
+  display: flex;
+  justify-content: center;
+  padding: 3px;
+  height: 8px;
+  color: var(--color-gray-500);
+  border: 1px solid var(--color-gray-300);
+  background-color: white;
+}
+.page:hover {
+  background-color: var(--color-gray-100);
+  color: var(--color-gray-800);
+}
