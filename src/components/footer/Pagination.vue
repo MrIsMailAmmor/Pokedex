@@ -1,5 +1,5 @@
 <template lang="">
-  <div class="flex justify-center mb-5">
+  <div class="flex justify-center mt-5 mb-5">
     <li
       v-for="page in totalPages"
       :key="page"

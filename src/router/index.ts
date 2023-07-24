@@ -1,7 +1,7 @@
 // src/router/index.ts
 import { createRouter, createWebHistory, RouteRecordRaw } from "vue-router";
 import Home from "@/views/Home.vue";
-import PokemonView from "@/views/PokemonView.vue";
+import PokemonView from "@/views/PokemonDetailView.vue";
 import PokemonListView from "@/views/PokemonListView.vue";
 
 const routes: Array<RouteRecordRaw> = [

@@ -2,34 +2,14 @@
   <div class="flex">
     <PokemonFilterView />
     <div>
-      <div class="grid grid-cols-3 gap-3 right-0 font-mono mt-5 ml-5">
-        <div
+      <div
+        class="grid sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 xl:grid-cols-6 2xl:grid-cols-7 ease-in gap-3 right-0 font-mono mt-5 ml-5"
+      >
+        <PokemonCardView
           v-for="(pokemon, index) in pokemons"
           :key="index"
-          class="bg-pink rounded-lg w-60 card"
-        >
-          <img
-            :src="pokemon.sprites.other['official-artwork']['front_default']"
-            alt="Product Image"
-            class="h-15 w-full object-cover"
-          />
-          <div class="p-4">
-            <hr class="text-white" />
-            <h3
-              class="text-xl font-light mb-2 text-white text-center uppercase"
-            >
-              {{ pokemon.name }}
-            </h3>
-          </div>
-          <div class="m-auto w-fit">
-            <router-link
-              :to="`/pokemonView/${pokemon.id}`"
-              class="bg-white text-pink px-4 py-2 rounded-md hover:bg-blue hover:text-white hover:animate-bounce"
-            >
-              View Details
-            </router-link>
-          </div>
-        </div>
+          :pokemon="pokemon"
+        />
       </div>
 
       <Pagination
@@ -42,11 +22,12 @@
 </template>
 <script setup lang="ts">
 import Pagination from "@/components/footer/Pagination.vue";
-import PokemonFilterView from "@/components/pokemonFilterView/PokemonFilterView.vue";
+import PokemonFilterView from "@/components/leftPanel/PokemonFilterView.vue";
+import PokemonCardView from "./PokemonCardView.vue";
 import { myStore } from "@/store";
 import { Pokemon } from "@/utils/interface";
 import { filterAndScoreData } from "@/utils/utils";
-import { Ref, computed, watch, ref } from "vue";
+import { Ref, computed, watch } from "vue";
 import { useRoute, useRouter } from "vue-router";
 
 const route = useRoute();
@@ -58,7 +39,7 @@ store.setCurrentPage(+route.params.page);
 
 const pokemons: Ref<Pokemon[]> = computed(() => {
   if (
-    store.$state.pokemonFilters.pokemonTypes?.length >= 1 ||
+    store.$state.pokemonFilters.pokemonTypes?.length > 0 ||
     store.$state.pokemonFilters.pokemonWeight <= 1200 ||
     store.$state.pokemonFilters.searchName?.length > 2
   ) {
@@ -71,6 +52,8 @@ const pokemons: Ref<Pokemon[]> = computed(() => {
   return store.getCurrentPageData;
 });
 
+// to check if the current page doesn't have any content
+// use case be in page 3, use filter that will show only one page, we get empty page 3
 watch(pokemons, (pokemons) => {
   if (pokemons.length === 0) {
     changePage(1);
@@ -89,6 +72,7 @@ const changePage = (page: number) => {
   window.scrollTo({ top: 0, left: 0, behavior: "smooth" });
 };
 
-const currentPage = ref(route.params.page || store.currentPage);
+// to follow the changes of the current page
+const currentPage = computed(() => route.params.page || store.currentPage);
 </script>
 <style lang=""></style>

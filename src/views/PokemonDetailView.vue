@@ -1,5 +1,13 @@
 <template>
   <div class="m-auto text-center card w-fit self-center mt-5">
+    <div class="float-left absolute">
+      <button
+        class="bg-blue hover:bg-white text-white font-semibold hover:text-blue py-2 px-4 border border-white hover:border-blue hover:border-transparent rounded"
+        :onclick="goBackToPreviousPage"
+      >
+        Go Back
+      </button>
+    </div>
     <p class="text-xl uppercase font-bold">{{ name }}</p>
     <img
       :src="sprites.other['official-artwork']['front_default']"
@@ -43,10 +51,13 @@ import { useRoute } from "vue-router";
 import { myStore } from "@/store";
 import { Pokemon } from "@/utils/interface";
 import { pickColor } from "@/utils/utils";
+
 const route = useRoute();
 const store = myStore();
+
 const id = parseInt(route.params.id as string);
 const pokemon = store.getPokemonById(id) as Pokemon;
+
 const { height, species, types, weight, name, stats, sprites } =
   pokemon as Pokemon;
 
@@ -61,5 +72,8 @@ const pokemonTypeStyle = (type: string) => {
     color: "white",
   };
 };
+const goBackToPreviousPage = () => {
+  window.history.back();
+};
 </script>
-<style lang=""></style>
+<style></style>

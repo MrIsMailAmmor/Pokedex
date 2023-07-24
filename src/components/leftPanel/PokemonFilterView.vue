@@ -1,18 +1,23 @@
 <template>
   <div
-    class="leftPanel w-4/12 h-screen sticky top-0 bg-white mt-5 rounded-md font-bolder font-mono text-3xl"
+    class="leftPanel h-screen sticky top-0 bg-white mt-5 rounded-md font-bolder font-mono text-3xl md:block md:w-3/12 sm:w-4/12 lg:w-/12"
   >
     <div class="text-center">Filters</div>
-    <div v-for="type in unique" :key="type" class="ml-4">
-      <input
-        type="checkbox"
-        :id="type"
-        :value="type"
-        v-model="filterTypes"
-        class="ml-4"
-      />
-      <label :for="type" class="ml-4 text-base">{{ type }} </label>
+    <div v-for="pokemonType in unique" :key="pokemonType" class="ml-4">
+      <div>
+        <input
+          type="checkbox"
+          :name="pokemonType"
+          :value="pokemonType"
+          class="ml-4"
+          v-model="filterTypes"
+        />
+        <label :for="pokemonType" class="ml-4 text-base"
+          >{{ pokemonType }}
+        </label>
+      </div>
     </div>
+    {{ filterTypes }}
     <br />
     <div class="ml-4 text-2xl">
       <input type="checkbox" v-model="activateWeightFilter" /><span
@@ -21,16 +26,16 @@
         Weight Filter</span
       >
       <div v-if="activateWeightFilter">
-        <span class="font-mono font-bold">Weight : </span>
+        <span class="font-mono font-base text-base">Weight less than </span>
         <input
           type="range"
           min="20"
           max="1200"
           v-model="selectedWeight"
-          class="ml-4"
+          class="ml-4 m-auto"
         />
-        <span class="ml-4 font-bold">
-          {{ selectedWeight }}
+        <span class="font-bold text-base m-auto p-3">
+          {{ selectedWeight }}kg
         </span>
       </div>
     </div>
@@ -40,8 +45,8 @@
         type="text"
         name="searchName"
         v-model="searchName"
-        class="placeholder:italic placeholder:text-slate-400 block bg-white border border-slate-300 rounded-md py-2 pl-9 pr-3 shadow-sm focus:outline-none focus:border-sky-500 focus:ring-sky-500 focus:ring-1 sm:text-sm w-6/12"
-        placeholder="Search for anything..."
+        class="placeholder:text-xs placeholder:italic placeholder:text-slate-400 block bg-white border border-slate-300 rounded-md py-2 pl-2 pr-1 shadow-sm focus:outline-none focus:border-sky-500 focus:ring-sky-500 focus:ring-1 sm:text-sm md:text-md sm:w-2/2"
+        placeholder="Pokemon Search..."
       />
     </div>
   </div>
@@ -50,10 +55,9 @@
 <script setup lang="ts">
 import { myStore } from "@/store";
 import { Pokemon } from "@/utils/interface";
-import { ref, computed, watch } from "vue";
+import { ref, computed, watch, onUnmounted } from "vue";
 const store = myStore();
 const data = store.originalData;
-
 const pokemonTypes: string[] = data.flatMap((pokemon: Pokemon) => {
   if (pokemon.types.length > 1) {
     return pokemon.types.map((type) => type.type.name);
@@ -69,6 +73,7 @@ const filterTypes = ref<string[]>([]);
 const activateWeightFilter = ref(false);
 
 const typesFilter = computed(() => {
+  console.log(filterTypes);
   return [...filterTypes.value];
 });
 const weightFilterChange = computed(() => {
@@ -99,6 +104,17 @@ const filterPokemons = (
 ) => {
   store.setPokemonFilters({ pokemonTypes, pokemonWeight, searchName });
 };
+const resetFilters = (
+  pokemonTypes: string[] = [],
+  pokemonWeight: number = 9999,
+  searchName: string = ""
+) => {
+  store.setPokemonFilters({ pokemonTypes, pokemonWeight, searchName });
+};
+
+onUnmounted(() => {
+  resetFilters();
+});
 </script>
 
 <style></style>
