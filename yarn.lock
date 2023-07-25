@@ -716,6 +716,13 @@
   resolved "https://registry.yarnpkg.com/@one-ini/wasm/-/wasm-0.1.1.tgz#6013659736c9dbfccc96e8a9c2b3de317df39323"
   integrity sha512-XuySG1E38YScSJoMlqovLru4KTUNSjgVTIjyh7qMX6aNN5HY5Ct5LhRJdxO79JtTzKfzV/bnWpz+zquYrISsvw==
 
+"@pinia/testing@^0.1.2":
+  version "0.1.2"
+  resolved "https://registry.yarnpkg.com/@pinia/testing/-/testing-0.1.2.tgz#21aef66d42b06f921bd7bc70511f9f7e9752c763"
+  integrity sha512-8EyBaVFtv682tBiF810u81vAJ1ykwnaldkVDU52oqtVbh5FUj5dSCSM9+MtRM/tZkq0AulwMK4BnBktqwsnEnw==
+  dependencies:
+    vue-demi ">=0.14.5"
+
 "@sinclair/typebox@^0.27.8":
   version "0.27.8"
   resolved "https://registry.yarnpkg.com/@sinclair/typebox/-/typebox-0.27.8.tgz#6667fac16c436b5434a387a34dedb013198f6e6e"

@@ -10,4 +10,5 @@ module.exports = {
   testEnvironmentOptions: {
     customExportConditions: ["node", "node-addons"],
   },
+  verbose: true,
 };

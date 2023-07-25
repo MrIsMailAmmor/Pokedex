@@ -10,6 +10,7 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@pinia/testing": "^0.1.2",
     "@types/jest": "^29.5.3",
     "@vue/test-utils": "^2.4.1",
     "@vue/vue3-jest": "^29.2.4",
