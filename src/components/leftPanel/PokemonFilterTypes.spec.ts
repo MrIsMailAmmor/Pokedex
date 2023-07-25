@@ -3,6 +3,7 @@ import PokemonFilterTypesVue from "./PokemonFilterTypes.vue";
 describe("Pokemon Filter Types", () => {
   const modelValue: string[] = [];
   let wrapper: VueWrapper;
+
   beforeEach(() => {
     wrapper = mount(PokemonFilterTypesVue, {
       props: {
@@ -14,23 +15,23 @@ describe("Pokemon Filter Types", () => {
     });
   });
 
-  it("mount", () => {
+  it("mounted", () => {
     const wrapper = mount(PokemonFilterTypesVue);
     expect(wrapper).toBeDefined();
   });
 
-  it("has correct checkboxes", async () => {
+  it("emit an update of model value", async () => {
     wrapper.vm.$emit("update:modelValue", ["fire"]);
     await wrapper.vm.$nextTick();
     const emitted = wrapper.emitted();
     expect(emitted["update:modelValue"].length).toBe(1);
+  });
 
+  it("update model value correctly", async () => {
     const fireCheckBox = wrapper.find('input[data-test="fire"]');
     expect(fireCheckBox).toBeDefined();
 
-    await fireCheckBox.trigger("click");
-    await wrapper.setProps({ modelValue: ["fire"] });
-
+    await fireCheckBox.setValue(true);
     expect(wrapper.props().modelValue).toStrictEqual(["fire"]);
   });
 });
