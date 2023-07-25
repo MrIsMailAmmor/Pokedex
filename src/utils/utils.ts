@@ -59,14 +59,26 @@ export const filterAndScoreData = (
     );
   }
   if (searchName.length > 2) {
-    filteredData = data.filter(
-      (pokemon) => pokemon.name.toLowerCase().includes(searchName.toLowerCase()) // Case-insensitive search
-    );
+    if (filteredData && filteredData.length > 0) {
+      filteredData = filteredData.filter((pokemon) =>
+        pokemon.name.toLowerCase().includes(searchName.toLowerCase())
+      );
+    } else {
+      filteredData = data.filter((pokemon) =>
+        pokemon.name.toLowerCase().includes(searchName.toLowerCase())
+      );
+    }
   }
   if (pokemonWeight <= 1200) {
-    filteredData = data.filter(
-      (pokemon) => pokemon.weight < pokemonWeight // Case-insensitive search
-    );
+    if (filteredData && filteredData.length > 0) {
+      filteredData = filteredData.filter(
+        (pokemon) => pokemon.weight < pokemonWeight // Case-insensitive search
+      );
+    } else {
+      filteredData = data.filter(
+        (pokemon) => pokemon.weight < pokemonWeight // Case-insensitive search
+      );
+    }
   }
 
   // Calculate a score for each Pokémon based on the matched conditions

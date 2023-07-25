@@ -19,7 +19,7 @@
 <script setup lang="ts">
 import { myStore } from "../../store";
 import { Pokemon } from "@/utils/interface";
-import { ref, computed, watch, onBeforeMount } from "vue";
+import { ref, watch, onBeforeMount } from "vue";
 import PokemonFilterTypes from "./PokemonFilterTypes.vue";
 import PokemonFilterWeightView from "./PokemonFilterWeightView.vue";
 import PokemonFilterSearchView from "./PokemonFilterSearchView.vue";
@@ -46,24 +46,12 @@ onBeforeMount(() => {
   pokemonSearchByName.value = store.pokemonFilters.searchName;
 });
 
-const typesFilter = computed(() => {
-  return [...(pokemonFilterTypes.value || [])];
-});
-const weightFilterChange = computed(() => {
-  return pokemonSelectedWeight.value;
-});
-const activateWeightFilterOption = computed(() => {
-  return weightFilterFlag.value;
-});
-const nameSearchOption = computed(() => {
-  return pokemonSearchByName.value;
-});
 watch(
   [
-    typesFilter,
-    weightFilterChange,
-    activateWeightFilterOption,
-    nameSearchOption,
+    pokemonFilterTypes,
+    pokemonSelectedWeight,
+    weightFilterFlag,
+    pokemonSearchByName,
   ],
   ([types, weight, flagWeight, searchName]) => {
     filterPokemons(types, !flagWeight ? 9999 : weight, searchName);
