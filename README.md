@@ -1,4 +1,4 @@
-Hello and Welcome to my Pokedex Project :)
+Hello Welcom to this Pokedex Project :)
 
 # Installation
 
@@ -16,9 +16,9 @@ npm install
 
 ## How it works
 
+This application has 3 different views<br/>
 Technologie used : Typescript, vue3, tailwind, css, jest, vue-test-utils, Pinia, vite, git<br/>
 Breakpoints for small medium and large screens<br/>
-This application has 3 different views<br/>
 
 ### Home
 
@@ -38,14 +38,14 @@ contain 2 main components in our application<br/>
 #### Left panel manager<br/>
 
 I have one main component that manage the state of all the filters on the left panel<br/>
-Each filter has it's own component and own tests<br/>
+Each filter has it's own component and own test<br/>
 
-##### LeftPanel - Filter Logic
+##### Logic
 
 Filter use score system<br/>
 It depends on how many filters at once are used, the result can be different<br/>
 The more accurate is the search by name system alone<br/>
-Else, combining it, shows all the pokemons sorted by score depends on the filters ( name +1, each type +1, weight +1)
+Else combined it shows all the pokemons sorted by score depends of the filters ( name +1, each type +1, weight +1)
 
 #### Pokemon list view
 
@@ -96,7 +96,7 @@ npm run build
 
 ## To start the build
 
-i use Serve if you don't have it you can execute the command needed :<br/>
+i use Serve if you don't have it you can execute the commande needed :<br/>
 
 ```shell
 yarn add serve
@@ -106,7 +106,7 @@ yarn add serve
 npm install --global serve
 ```
 
-And finally start the server with the -s argument as a single page application
+and finally start the server with the argument -s as a single page application
 <br/>
 
 Note that without the -s argument, you might experience some problemes going the the pokemons list directly, you'll have to go to "/" first to be redirected
