@@ -21,7 +21,7 @@ describe("Pokemon Filter Weight View", () => {
     const weightFlagCheckbox = wrapper.find('input[data-test="weight-Flag"]');
     expect(weightFlagCheckbox).toBeDefined();
 
-    await weightFlagCheckbox.setValue(true);
+    await weightFlagCheckbox.setValue(false);
 
     let emitted = wrapper.emitted();
 

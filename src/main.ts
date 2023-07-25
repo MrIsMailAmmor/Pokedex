@@ -2,7 +2,7 @@
 import { createApp } from "vue";
 import App from "./App.vue";
 import { createPinia } from "pinia";
-import "@/style.css";
+import "./style.css";
 import router from "@/router";
 import { getInitialData } from "./utils/utils";
 import { myStore } from "./store";

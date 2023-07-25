@@ -12,7 +12,7 @@
           :name="pokemonType"
           class="ml-4"
           @change="handleCheckboxChange(pokemonType)"
-          :checked="modelValue && modelValue.includes(pokemonType)"
+          :checked="modelValue.includes(pokemonType)"
           :data-test="pokemonType"
         />
         <label :for="pokemonType" class="ml-4 text-base">{{

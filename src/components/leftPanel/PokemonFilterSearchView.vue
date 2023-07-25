@@ -4,6 +4,7 @@
     <input
       type="text"
       name="searchName"
+      :value="modelValue"
       @input="(e:Event) =>onInputChange(e )"
       class="placeholder:text-xs placeholder:italic placeholder:text-slate-400 block bg-white border border-slate-300 rounded-md py-2 pl-2 pr-1 shadow-sm focus:outline-none focus:border-sky-500 focus:ring-sky-500 focus:ring-1 sm:text-sm md:text-md sm:w-2/2"
       placeholder="Pokemon Search..."

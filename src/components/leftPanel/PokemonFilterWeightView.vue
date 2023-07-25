@@ -5,6 +5,7 @@
         type="checkbox"
         @change="handleFlagChange"
         data-test="weight-Flag"
+        :checked="weightFlag"
       /><span class="text-base"> Weight Filter</span>
       <div v-if="weightFlag">
         <span class="font-mono font-base text-base">Weight less than </span>
@@ -12,6 +13,7 @@
           type="range"
           min="20"
           max="1200"
+          :value="selectedWeight"
           @change="(e) => handleWeightChange(e)"
           class="ml-4 m-auto"
           data-test="selected-Weight"

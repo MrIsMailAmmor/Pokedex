@@ -19,7 +19,7 @@
 <script setup lang="ts">
 import { myStore } from "../../store";
 import { Pokemon } from "@/utils/interface";
-import { ref, computed, watch, onMounted } from "vue";
+import { ref, computed, watch, onBeforeMount } from "vue";
 import PokemonFilterTypes from "./PokemonFilterTypes.vue";
 import PokemonFilterWeightView from "./PokemonFilterWeightView.vue";
 import PokemonFilterSearchView from "./PokemonFilterSearchView.vue";
@@ -39,7 +39,7 @@ const pokemonsTypes: string[] = data.flatMap((pokemon: Pokemon) => {
 
 let uniquePokemonsType = [...new Set(pokemonsTypes)];
 
-onMounted(() => {
+onBeforeMount(() => {
   pokemonFilterTypes.value = store.pokemonFilters.pokemonTypes || [];
   weightFilterFlag.value = store.pokemonFilters.pokemonWeight <= 1200;
   pokemonSelectedWeight.value = store.pokemonFilters.pokemonWeight;
