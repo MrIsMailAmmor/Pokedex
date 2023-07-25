@@ -9,7 +9,8 @@ describe("Pokemon Filter Types", () => {
       props: {
         uniquePokemonsType: ["fire", "grass", "water"],
         modelValue,
-        "onUpdate:modelValue": (e: any) => wrapper.setProps({ modelValue: e }),
+        "onUpdate:modelValue": (e: Event) =>
+          wrapper.setProps({ modelValue: e }),
       },
       emits: ["update:modelValue"],
     });

@@ -14,4 +14,7 @@ describe("Filters Component", () => {
     wrapper = mount(PokemonFilterViewVue);
     expect(wrapper).toBeDefined();
   });
+  it("find the title Filter", () => {
+    expect(wrapper.text()).toContain("Filters");
+  });
 });

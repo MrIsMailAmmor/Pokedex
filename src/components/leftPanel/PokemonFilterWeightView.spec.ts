@@ -8,14 +8,9 @@ describe("Pokemon Filter Weight View", () => {
       attachTo: document.body,
       props: {
         pokemonSelectedWeight: 9999,
-        "onUpdate:pokemon-selected-weight": (e: any) =>
-          wrapper.setData({ modelValue: e }),
+        weightFlag: true,
       },
-      data() {
-        return {
-          weightFilterFlag: false,
-        };
-      },
+      emits: ["update:weightFlag", "update:selectedWeight"],
     });
     await wrapper.vm.$nextTick();
   });
@@ -23,15 +18,22 @@ describe("Pokemon Filter Weight View", () => {
     expect(wrapper).toBeDefined();
   });
   it("found the input text and activate the flag", async () => {
-    const weightFlagCheckbox = wrapper.find('input[data-test="weightFlag"]');
+    const weightFlagCheckbox = wrapper.find('input[data-test="weight-Flag"]');
     expect(weightFlagCheckbox).toBeDefined();
 
     await weightFlagCheckbox.setValue(true);
-    const rangeInput = wrapper.find('input[data-test="selectedWeight"]');
-    expect(rangeInput).toBeDefined();
 
+    let emitted = wrapper.emitted();
+
+    expect(emitted["update:weightFlag"].length).toBe(1);
+    expect(emitted["update:selectedWeight"].length).toBe(1);
+  });
+  it("change the value of the weight input", async () => {
+    const rangeInput = wrapper.find('input[data-test="selected-Weight"]');
+    expect(rangeInput).toBeDefined();
     await rangeInput.setValue(500);
+
     const emitted = wrapper.emitted();
-    expect(emitted["update:pokemon-selected-weight"].length).toBe(1);
+    expect(emitted["update:selectedWeight"].length).toBe(1);
   });
 });

@@ -24,7 +24,7 @@ export const myStore: StoreDefinition<"myStore", State, Getters, Actions> =
       setFilteredData(filteredData: Pokemon[]) {
         this.filteredData = filteredData;
       },
-      async getInitialData() {
+      async setInitialData() {
         this.originalData = await getInitialData();
       },
     },

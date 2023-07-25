@@ -8,8 +8,11 @@
       :unique-pokemons-type="uniquePokemonsType"
     />
     <br />
-    <PokemonFilterWeightView v-model="pokemonSelectedWeight" />
-    <PokemonFilterSearchView v-model="pokemonSearchByName" />
+    <PokemonFilterWeightView
+      v-model:selectedWeight="pokemonSelectedWeight"
+      v-model:weightFlag="weightFilterFlag"
+    />
+    <PokemonFilterSearchView v-model;model-value="pokemonSearchByName" />
   </div>
 </template>
 

@@ -17,5 +17,5 @@ export interface Actions {
   setCurrentPage(page: number): void;
   setPokemonFilters(filters: Filter): void;
   setFilteredData(filteredData: Pokemon[]): void;
-  getInitialData(): Promise<void>;
+  setInitialData(): Promise<void>;
 }

@@ -26,8 +26,7 @@ export const getters = {
   },
   getPokemonById(state: State) {
     return (id: number) => {
-      const pokemon = state.originalData.find((pok: Pokemon) => pok.id === id);
-      return pokemon;
+      return state.originalData.find((pok: Pokemon) => pok.id === id);
     };
   },
 };

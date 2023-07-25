@@ -8,7 +8,8 @@ describe("Pokemon Filter Search View", () => {
     wrapper = mount(PokemonFilterSearchViewVue, {
       props: {
         modelValue,
-        "onUpdate:modelValue": (e: any) => wrapper.setProps({ modelValue: e }),
+        "onUpdate:modelValue": (e: Event) =>
+          wrapper.setProps({ modelValue: e }),
       },
       emits: ["update:modelValue"],
     });
@@ -23,7 +24,7 @@ describe("Pokemon Filter Search View", () => {
     // Enter a search term and trigger the input event
     await searchInput.setValue("Charizard");
   });
-  it("the event should be already sent", async () => {
+  it("should receive an event", async () => {
     const emitted = wrapper.emitted();
 
     expect(emitted["update:modelValue"].length).toBe(1);

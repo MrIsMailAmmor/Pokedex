@@ -3,11 +3,10 @@
     <div class="ml-8 text-2xl">
       <input
         type="checkbox"
-        v-model="weightFilterFlag"
-        @onclick="handleFlagChange"
-        data-test="weightFlag"
+        @change="handleFlagChange"
+        data-test="weight-Flag"
       /><span class="text-base"> Weight Filter</span>
-      <div v-if="weightFilterFlag">
+      <div v-if="weightFlag">
         <span class="font-mono font-base text-base">Weight less than </span>
         <input
           type="range"
@@ -15,9 +14,11 @@
           max="1200"
           @change="(e) => handleWeightChange(e)"
           class="ml-4 m-auto"
-          data-test="selectedWeight"
+          data-test="selected-Weight"
         />
-        <span class="font-bold text-base m-auto p-3"> {{ modelValue }}kg </span>
+        <span class="font-bold text-base m-auto p-3">
+          {{ selectedWeight }}kg
+        </span>
       </div>
     </div>
   </div>
@@ -25,19 +26,16 @@
 <script lang="ts">
 export default {
   name: "PokemonFilterWeightView",
-  props: ["modelValue"],
-  emits: ["update:modelValue"],
-  data() {
-    return {
-      weightFilterFlag: false,
-    };
-  },
+  props: ["selectedWeight", "weightFlag"],
+  emits: ["update:selectedWeight", "update:weightFlag"],
   methods: {
     handleFlagChange() {
-      this.$emit("update:modelValue", 20);
+      this.$emit("update:weightFlag", !this.weightFlag);
+      this.$emit("update:selectedWeight", 20);
     },
-    handleWeightChange(e: any) {
-      this.$emit("update:modelValue", Number(e.target.value));
+    handleWeightChange(e: Event) {
+      const target = e.target as HTMLInputElement;
+      this.$emit("update:selectedWeight", Number(target.value));
     },
   },
 };
