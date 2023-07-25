@@ -115,5 +115,5 @@ Note that without the -s argument, you might experience some problemes going the
 serve -s dist
 ```
 
-Hope you like it ! :)
-Peace and Pokemon
+Hope you like it ! :)<br>
+Peace and Pokemon <br>
