@@ -1,6 +1,6 @@
 <template>
   <div class="flex">
-    <PokemonFilterView />
+    <PokemonFilterManager />
     <div>
       <div
         class="grid sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 2xl:grid-cols-6 ease-in gap-3 right-0 font-mono mt-5 ml-5"
@@ -22,8 +22,8 @@
 </template>
 <script setup lang="ts">
 import Pagination from "@/components/footer/Pagination.vue";
-import PokemonFilterView from "@/components/leftPanel/PokemonFilterView.vue";
 import PokemonCardView from "./PokemonCardView.vue";
+import PokemonFilterManager from "@/components/leftPanel/PokemonFilterManager.vue";
 import { myStore } from "@/store";
 import { Pokemon } from "@/utils/interface";
 import { filterAndScoreData } from "@/utils/utils";

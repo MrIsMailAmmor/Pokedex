@@ -1,14 +1,13 @@
 import { VueWrapper, mount } from "@vue/test-utils";
 import PokemonFilterTypesVue from "./PokemonFilterTypes.vue";
 describe("Pokemon Filter Types", () => {
-  const modelValue: string[] = [];
   let wrapper: VueWrapper;
 
   beforeEach(() => {
     wrapper = mount(PokemonFilterTypesVue, {
       props: {
         uniquePokemonsType: ["fire", "grass", "water"],
-        modelValue,
+        modelValue: [],
         "onUpdate:modelValue": (e: Event) =>
           wrapper.setProps({ modelValue: e }),
       },

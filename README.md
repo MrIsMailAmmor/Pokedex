@@ -1,18 +1,119 @@
-# Vue 3 + TypeScript + Vite
+Hello and Welcome to my Pokedex Project :)
 
-This template should help get you started developing with Vue 3 and TypeScript in Vite. The template uses Vue 3 `<script setup>` SFCs, check out the [script setup docs](https://v3.vuejs.org/api/sfc-script-setup.html#sfc-script-setup) to learn more.
+# Installation
 
-## Recommended IDE Setup
+Clone this repo in your local and execute one of these commands :
 
-- [VS Code](https://code.visualstudio.com/) + [Volar](https://marketplace.visualstudio.com/items?itemName=Vue.volar) (and disable Vetur) + [TypeScript Vue Plugin (Volar)](https://marketplace.visualstudio.com/items?itemName=Vue.vscode-typescript-vue-plugin).
+I used yarn for this project
 
-## Type Support For `.vue` Imports in TS
+```shell
+yarn install
+```
 
-TypeScript cannot handle type information for `.vue` imports by default, so we replace the `tsc` CLI with `vue-tsc` for type checking. In editors, we need [TypeScript Vue Plugin (Volar)](https://marketplace.visualstudio.com/items?itemName=Vue.vscode-typescript-vue-plugin) to make the TypeScript language service aware of `.vue` types.
+```shell
+npm install
+```
 
-If the standalone TypeScript plugin doesn't feel fast enough to you, Volar has also implemented a [Take Over Mode](https://github.com/johnsoncodehk/volar/discussions/471#discussioncomment-1361669) that is more performant. You can enable it by the following steps:
+## How it works
 
-1. Disable the built-in TypeScript Extension
-   1. Run `Extensions: Show Built-in Extensions` from VSCode's command palette
-   2. Find `TypeScript and JavaScript Language Features`, right click and select `Disable (Workspace)`
-2. Reload the VSCode window by running `Developer: Reload Window` from the command palette.
+Technologie used : Typescript, vue3, tailwind, css, jest, vue-test-utils, Pinia, vite, git<br/>
+Breakpoints for small medium and large screens<br/>
+This application has 3 different views<br/>
+
+### Home
+
+Route ("/") and automatically redirect to our next view (pokemonListView)<br/><br/>
+
+The purpose of this route ? well we need a "/" to call home don't we :) <br/>
+Just joking,<br/>
+This route can be used in the future as a presentation page not directly showing pokemons :)
+
+### Pokemon list
+
+Route ("/pokemons/:page")<br/>
+
+This route is responsible for showing the pokemons => view : (PokemonListView)<br/>
+contain 2 main components in our application<br/>
+
+#### Left panel manager<br/>
+
+I have one main component that manage the state of all the filters on the left panel<br/>
+Each filter has it's own component and own tests<br/>
+
+##### LeftPanel - Filter Logic
+
+Filter use score system<br/>
+It depends on how many filters at once are used, the result can be different<br/>
+The more accurate is the search by name system alone<br/>
+Else, combining it, shows all the pokemons sorted by score depends on the filters ( name +1, each type +1, weight +1)
+
+#### Pokemon list view
+
+This view manage all the content and handle the state management for the pokemon list<br/>
+
+#### Pagination
+
+The footer folder contain our pagination system, easy enough to understand,<br/>
+Logic :<br/>
+
+- Get the total pokemons and generate the pages possible to navigate
+
+#### The navbar
+
+A small component i created for navigation purpose ( maybe futur ideas :)<br/>
+
+### Details page for unique pokemon
+
+This view is responsible for showing one unique pokemon in a card, with his attributes, => view :(/PokemonView/:id)<br/>
+
+### Unit Testing
+
+I used jest and vue-test-utils for the tests<br/>
+
+To launch all the tests : <br/>
+
+```shell
+yarn test
+```
+
+or
+
+```shell
+npm run test
+```
+
+## Build
+
+```shell
+yarn build
+```
+
+or
+
+```shell
+npm run build
+```
+
+## To start the build
+
+i use Serve if you don't have it you can execute the command needed :<br/>
+
+```shell
+yarn add serve
+```
+
+```shell
+npm install --global serve
+```
+
+And finally start the server with the -s argument as a single page application
+<br/>
+
+Note that without the -s argument, you might experience some problemes going the the pokemons list directly, you'll have to go to "/" first to be redirected
+
+```shell
+serve -s dist
+```
+
+Hope you like it ! :)
+Peace and Pokemon

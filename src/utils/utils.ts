@@ -72,12 +72,10 @@ export const filterAndScoreData = (
   if (pokemonWeight <= 1200) {
     if (filteredData && filteredData.length > 0) {
       filteredData = filteredData.filter(
-        (pokemon) => pokemon.weight < pokemonWeight // Case-insensitive search
+        (pokemon) => pokemon.weight < pokemonWeight
       );
     } else {
-      filteredData = data.filter(
-        (pokemon) => pokemon.weight < pokemonWeight // Case-insensitive search
-      );
+      filteredData = data.filter((pokemon) => pokemon.weight < pokemonWeight);
     }
   }
 
@@ -100,7 +98,7 @@ export const filterAndScoreData = (
         }
 
         if (pokemon.name.includes(searchName)) {
-          score++;
+          score++; // if the search is valid, give a bonus score
         }
         return { ...pokemon, score };
       });

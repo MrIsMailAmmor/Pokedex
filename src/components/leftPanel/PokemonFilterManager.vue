@@ -23,14 +23,16 @@ import { ref, watch, onBeforeMount } from "vue";
 import PokemonFilterTypes from "./PokemonFilterTypes.vue";
 import PokemonFilterWeightView from "./PokemonFilterWeightView.vue";
 import PokemonFilterSearchView from "./PokemonFilterSearchView.vue";
+
 const store = myStore();
-const data = store.originalData;
+const originalData = store.originalData;
+
 const pokemonSelectedWeight = ref<number>(9999);
 const pokemonSearchByName = ref("");
 const pokemonFilterTypes = ref<string[]>([]);
 const weightFilterFlag = ref(false);
 
-const pokemonsTypes: string[] = data.flatMap((pokemon: Pokemon) => {
+const pokemonsTypes: string[] = originalData.flatMap((pokemon: Pokemon) => {
   if (pokemon.types.length > 1) {
     return pokemon.types.map((type) => type.type.name);
   }
