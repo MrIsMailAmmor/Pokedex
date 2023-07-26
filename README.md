@@ -1,5 +1,8 @@
 Hello and Welcome to my Pokedex Project :)
 
+Quick preview :)
+https://pokedex-islam.netlify.app/
+
 # Installation
 
 Clone this repo in your local and execute one of these commands :
